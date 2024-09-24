@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRBL Robot Database</title>
+    <style>
+        body {
+            background-color: #B3E5FC; /* Darker sky blue background */
+            color: #000; /* Black text */
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565C0; /* Darker blue for titles */
+        }
+
+        .robot-entry {
+            display: flex;
+            align-items: flex-start; /* Align items at the top to prevent stretching */
+            margin: 20px auto;
+            padding: 10px;
+            border: 2px solid #90CAF9;
+            border-radius: 10px;
+            width: 80%;
+            background-color: #FFFFFF;
+        }
+
+        .robot-entry img {
+            width: 200px;
+            height: auto; /* Maintains the aspect ratio */
+            margin-right: 20px;
+            flex-shrink: 0; /* Prevents the image from shrinking */
+        }
+
+        .robot-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Ensures the text area grows to fill the space */
+        }
+
+        .robot-info p {
+            margin: 5px 0;
+        }
+
+        .robot-info h2 {
+            color: #1565C0;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the description section */
+        .description {
+            margin-top: 10px;
+        }
+
+        /* Flexbox layout ensures the fight link stays aligned */
+        .fight-link {
+            margin-top: 10px;
+        }
+
+        /* This will ensure robots are listed in alphabetical order by name */
+        .robots-list {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <h1>CRBL Robot Database</h1>
+    
+    <div id="robots-list" class="robots-list">
+        <!-- Robot entry start -->
+        <div class="robot-entry" data-name="Biscuit Head">
+            <img src="Biscuit Head.jpg" alt="Biscuit Head Robot Image">
+            <div class="robot-info">
+                <h2>Biscuit Head</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Flywheel Flipper</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for the drive, 1 BuWizz motor for the flywheel, one Power Functions M motor for the engagement mechanism.</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Biscuit Head is the first ever reliable Lego flywheel flipper, and has gone far from an initial attempt to prove a concept. Biscuit Head has fought in 4 events with an overall winning record of 16-10. It has earned the CRBL S3 greatest design award, and achieved podium finishes in each of its two CRBL events.</p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/jt19ofN34A4?si=E8Jr7ifjJf3fnLyH&t=2519" target="_blank">Biscuit Head vs. Phobos S3</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- Robot entry end -->
+
+        <!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Bruin">
+            <img src="Bruin Render.png" alt="Bruin Image">
+            <div class="robot-info">
+                <h2>Bruin</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Overhead bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> Bruin was initially designed to include 1 BuWizz 3.0 battery, 1 BuWizz motor for the weapon, and 2 Powered Up L motors for the drive. After being redesigned, it was build with 2 BuWizz 3.0 batteries, 2 Green Gecko L motors for drive, and 2 BuWizz motors for the weapon.</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Bruin is a 4WD overhead bar spinner, and one of the oldest designs that has competed in the CRBL. Known for it's weapon strength and tough armor, Bruin has been rebuilt from instructions all over the world.</p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/eWVEzPU9a6g?si=AnsI6DRxggWBusjN&t=643" target="_blank">Bruin vs. Friendzone</a></p>
+                </div>
+            </div>
+        </div>
+
+  <!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Pain">
+            <img src="Pain.jpg" alt="Pain Image">
+            <div class="robot-info">
+                <h2>Pain</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Vertical Disk Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 2 Lego AA battery packs, 2 Lego IR recievers, 2 Lego brand L motors for the drive, and 1 Lego 5292 Buggy motor for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Pain is one of the few designs in the CRBL made entirely from Lego brand products with no 3rd party electronics used. Pain is one of the oldest competitors in the CRBL and earned 3rd place in CRBL S2.</p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/wgt_IvYyFeA?si=bJ22a43UVR9zx-w4&t=1010" target="_blank">Pain vs. Bruin CRBL S2</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Goaltender">
+            <img src="Goaltender.png" alt="Goaltender Image">
+            <div class="robot-info">
+                <h2>Goaltender</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Suplexer</p>
+                <p><strong>Competed in the CRBL?</strong> No</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Lego Power Functions L motors for drive, 2 Green Gecko XL motors for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Built in 2 weeks, Goaltender had an impressive showing at its lone event at Battle Bricks. It went 5-2 and qualified for the tournament taking the 6th seed in an event with 32 entrants. </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/eWVEzPU9a6g?si=5eXSOrvGv6q0WNvY&t=2244" target="_blank">Goaltender vs. Terabyte</a></p>
+                </div>
+            </div>
+        </div>
+	
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Papi V2">
+            <img src="Papi V2.jpg" alt="Papi V2 Image">
+            <div class="robot-info">
+                <h2>Papi V2</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Suplexer</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 2 BuWizz 2.0 batteries, 2 Lego Power Functions L motors for drive, 2 Lego Power Functions XL motors for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Papi has been worked on for several years, and the second version of this design featured a geared system using Lego petal gears for the weapon </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/jt19ofN34A4?si=Bpa3gJ1O8DbMXCUX&t=4007" target="_blank">Papi V2 vs. Bruin CRBL S3</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Papi V3">
+            <img src="Papi V3.png" alt="Papi V3 Image">
+            <div class="robot-info">
+                <h2>Papi V3</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Suplexer</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 2 BuWizz 3.0 batteries, 2 BuWizz motors for drive, 2 Lego Powered Up motors for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> The 3rd iteration of Papi has seen a lot of success compared to previous designs. This version of Papi was built for speed, and features a string system for the weapon </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/MwSBJGnAeYs?si=PWHYmmMxHkGdvgoT&t=1366" target="_blank">Papi V3 vs. Kite CRBL S4 Final</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Flakes">
+            <img src="Flakes.jpg" alt="Flakes Image">
+            <div class="robot-info">
+                <h2>Flakes</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Lifter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> Lifter: 1 Lego AA Battery box, 2 Lego Power Functions M motors, 1 Lego Power Functions XL motor, 2 Lego IR recievers. Minibot: Lego app controlled move hub, Lego Powered Up M motor.</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Flakes is the first ever multibot to compete in the CRBL, and had a surprising run in CRBL S2 when it won its first 3 fights and took the first seed. The main bot's name is Flakes, and the minibot's name is Avalanch. </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/wgt_IvYyFeA?si=jiGFGZx9fVFFbA22&t=861" target="_blank">Flakes vs. Tugboat CRBL S2</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Cold Front">
+            <img src="Cold Front.png" alt="Cold Front Image">
+            <div class="robot-info">
+                <h2>Cold Front</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Hammersaw</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 1 BuWizz motor for the spinner, 1 Green Gecko XL motor for the arm, 2 Powered Up L motors for the drive</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Cold front was built as the successor of Striker, the first hammersaw to enter the CRBL. Cold Front shares the same spinner design as Striker, with an updated color scheme to match the winter theme of the robot. </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/jt19ofN34A4?si=jy_8FNjbqhwwhB3n&t=1425" target="_blank">Cold Front vs. Bad Luck CRBL S3</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Kite">
+            <img src="Kite.png" alt="Kite Image">
+            <div class="robot-info">
+                <h2>Kite</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Lifter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Green Gecko XL motors for the lifter, 2 Green Gecko L motors for the drive</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Kite was designed to be treated as a kit design for new builders, and has been driven by a new builder at every event. Despite being piloted by rookies each time, Kite has come to a 2nd place finish in CRBL S2 </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/MwSBJGnAeYs?si=krKC0kL0ZCJDvrgt&t=972" target="_blank">Kite vs. Bad Luck CRBL S4</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Striker">
+            <img src="Striker.png" alt="Striker Image">
+            <div class="robot-info">
+                <h2>Striker</h2>
+                <p><strong>Builder:</strong> Nick Cowen</p>
+                <p><strong>Weapon Type:</strong> Hammersaw</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 1 Green Gecko XL motor for the arm, 1 5292 buggy motor for the spinner, 2 Powered Up L motors for the drive</p>
+                <div class="description">
+                    <p><strong>Description:</strong> The first ever hammersaw to compete in the CRBL </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/wgt_IvYyFeA?si=kujMC1Y5EgPf8HaN&t=327" target="_blank">Striker vs. Bruin CRBL S2</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Tugboat">
+            <img src="Tugboat.png" alt="Tugboat Image">
+            <div class="robot-info">
+                <h2>Tugboat</h2>
+                <p><strong>Builder:</strong> Anthony Cowen</p>
+                <p><strong>Weapon Type:</strong> Horizontal Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up M motors for the drive, 1 Lego train motor for he weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> Nobody tugs a boat like Tugboat </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="https://youtu.be/wgt_IvYyFeA?si=1C_aaA_stWTOaOA1&t=2" target="_blank">Tugboat vs. Pain CRBL S2</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Wheeled Scorpion">
+            <img src="Wheeled Scorpion.png" alt="Wheeled Scorpion Image">
+            <div class="robot-info">
+                <h2>Wheeled Scorpion</h2>
+                <p><strong>Builder:</strong> Paolo Di Gregorio Zitella</p>
+                <p><strong>Weapon Type:</strong> Flipper</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 2.0 battery, 3 Power Functions L motors</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Phobos V2">
+            <img src="Phobos V2.png" alt="Phobos V2 Image">
+            <div class="robot-info">
+                <h2>Phobos V2</h2>
+                <p><strong>Builder:</strong> Justin Fossum</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for drive, 1 BuWizz motor for the weapon, 1 Power Funtions L motor for the self righter</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Phobos V3">
+            <img src="Phobos V3.png" alt="Phobos V3 Image">
+            <div class="robot-info">
+                <h2>Phobos V3</h2>
+                <p><strong>Builder:</strong> Justin Fossum</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for drive, 1 BuWizz motor for the weapon, 1 Power Funtions L motor for the self righter</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Outrage">
+            <img src="Outrage.png" alt="Outrage Image">
+            <div class="robot-info">
+                <h2>Outrage</h2>
+                <p><strong>Builder:</strong> Steve Evart</p>
+                <p><strong>Weapon Type:</strong> Vertical disk spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for drive, 1 BuWizz motor for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Rupture">
+            <img src="Rupture.png" alt="Rupture Image">
+            <div class="robot-info">
+                <h2>Rupture</h2>
+                <p><strong>Builder:</strong> Philip Ingold</p>
+                <p><strong>Weapon Type:</strong> Vertical disk spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for drive, 1 BuWizz motor for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="IDK">
+            <img src="IDK.png" alt="IDK Image">
+            <div class="robot-info">
+                <h2>IDK</h2>
+                <p><strong>Builder:</strong> Ben Donaldson</p>
+                <p><strong>Weapon Type:</strong> Horizontal Midcutter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for drive, 1 BuWizz motor for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Deimos">
+            <img src="Deimos.png" alt="Deimos Image">
+            <div class="robot-info">
+                <h2>Deimos</h2>
+                <p><strong>Builder:</strong> Justin Fossum</p>
+                <p><strong>Weapon Type:</strong> Egg beater vertical spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> 1 BuWizz 3.0 battery, 2 Powered Up L motors for drive, 1 BuWizz motor for the weapon</p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Helios">
+            <img src="Helios.png" alt="Helios Image">
+            <div class="robot-info">
+                <h2>Helios</h2>
+                <p><strong>Builder:</strong> Sydney Dowdy</p>
+                <p><strong>Weapon Type:</strong> Hammersaw</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Deception">
+            <img src="Deception.png" alt="Deception Image">
+            <div class="robot-info">
+                <h2>Deception</h2>
+                <p><strong>Builder:</strong> William Fong</p>
+                <p><strong>Weapon Type:</strong> Hammersaw</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Greeble">
+            <img src="No Picture.png" alt="Greeble Image">
+            <div class="robot-info">
+                <h2>Greeble</h2>
+                <p><strong>Builder:</strong> Joe Hafner</p>
+                <p><strong>Weapon Type:</strong> Horizontal Midcutter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Crabvergent">
+            <img src="No Picture.png" alt="Crabvergent Image">
+            <div class="robot-info">
+                <h2>Crabvergent</h2>
+                <p><strong>Builder:</strong> William Fong</p>
+                <p><strong>Weapon Type:</strong> Vertical Bar Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Catastrophe">
+            <img src="Catastrophe.png" alt="Catastrophe Image">
+            <div class="robot-info">
+                <h2>Catastrophe</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical Bar Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Impact">
+            <img src="No Picture.png" alt="Impact Image">
+            <div class="robot-info">
+                <h2>Impact</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical Bar Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Drumroll">
+            <img src="No Picture.png" alt="Drumroll Image">
+            <div class="robot-info">
+                <h2>Drumroll</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical Disk Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Bad Luck">
+            <img src="Bad Luck.png" alt="Bad Luck Image">
+            <div class="robot-info">
+                <h2>Bad Luck</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="IDC">
+            <img src="No Picture.png" alt="IDC Image">
+            <div class="robot-info">
+                <h2>IDC</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Hammer</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Meteor">
+            <img src="No Picture.png" alt="Meteor Image">
+            <div class="robot-info">
+                <h2>Meteor</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Black Ops">
+            <img src="No Picture.png" alt="Black Ops Image">
+            <div class="robot-info">
+                <h2>Black Ops</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical egg beater spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Pikmin">
+            <img src="Pikmin.png" alt="Pikmin Image">
+            <div class="robot-info">
+                <h2>Pikmin</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Suplexer</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="MinoTire">
+            <img src="MinoTire.png" alt="MinoTire Image">
+            <div class="robot-info">
+                <h2>MinoTire</h2>
+                <p><strong>Builder:</strong> William Fong</p>
+                <p><strong>Weapon Type:</strong> Vertical Drum Spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Cataclysm">
+            <img src="No Picture.png" alt="Cataclysm Image">
+            <div class="robot-info">
+                <h2>Cataclysm</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical disk spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="The Three Amigos">
+            <img src="No Picture.png" alt="The Three Amigos Image">
+            <div class="robot-info">
+                <h2>The Three Amigos</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Annoying multibots</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Brute">
+            <img src="Brute.png" alt="Brute Image">
+            <div class="robot-info">
+                <h2>Brute</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Overhead bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Nova">
+            <img src="No Picture.png" alt="Nova Image">
+            <div class="robot-info">
+                <h2>Nova</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical egg beater spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Controlled Movement">
+            <img src="No Picture.png" alt="Controlled Movement Image">
+            <div class="robot-info">
+                <h2>Controlled Movement</h2>
+                <p><strong>Builder:</strong> Joe Hafner</p>
+                <p><strong>Weapon Type:</strong> Horizontal spinners</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Uppercut">
+            <img src="No Picture.png" alt="Uppercut Image">
+            <div class="robot-info">
+                <h2>Uppercut</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Wyvern">
+            <img src="No Picture.png" alt="Wyvern Image">
+            <div class="robot-info">
+                <h2>Wyvern</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Lifter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Total Disposal">
+            <img src="Total Disposal.png" alt="Total Disposal Image">
+            <div class="robot-info">
+                <h2>Total Disposal</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="G-Force">
+            <img src="G-Force.png" alt="G-Force Image">
+            <div class="robot-info">
+                <h2>G-Force</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical bar spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Onslaught">
+            <img src="No Picture.png" alt="Onslaught Image">
+            <div class="robot-info">
+                <h2>Onslaught</h2>
+                <p><strong>Builder:Sydney Dowdy</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Lifter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Walking Las Vegas">
+            <img src="Walking Las Vegas.png" alt="Walking Las Vegas Image">
+            <div class="robot-info">
+                <h2>Walking Las Vegas</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Lifter</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+<!-- Copy the following block of code to add new robots. Replace the details accordingly -->
+        
+        <div class="robot-entry" data-name="Ouch">
+            <img src="No Picture.png" alt="Ouch Image">
+            <div class="robot-info">
+                <h2>Ouch</h2>
+                <p><strong>Builder:</strong> ---</p>
+                <p><strong>Weapon Type:</strong> Vertical disk spinner</p>
+                <p><strong>Competed in the CRBL?</strong> Yes</p>
+                <p><strong>Electronics:</strong> (No Description) </p>
+                <div class="description">
+                    <p><strong>Description:</strong> (No Description) </p>
+                </div>
+                <div class="fight-link">
+                    <p><strong>Select Fight:</strong> <a href="---">No Link available</a></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        // Function to sort the robot entries alphabetically by their name
+        function sortRobots() {
+            const robotsList = document.getElementById('robots-list');
+            const robots = Array.from(robotsList.getElementsByClassName('robot-entry'));
+
+            robots.sort((a, b) => {
+                const nameA = a.getAttribute('data-name').toLowerCase();
+                const nameB = b.getAttribute('data-name').toLowerCase();
+                return nameA.localeCompare(nameB);
+            });
+
+            robots.forEach(robot => robotsList.appendChild(robot));
+        }
+
+        // Call the sorting function when the page loads
+        window.onload = sortRobots;
+    </script>
+</body>
+</html>
