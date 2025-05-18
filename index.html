@@ -901,193 +901,167 @@
 		},
 
     ];
+const container     = document.getElementById("robotContainer");
+  const robotSearch   = document.getElementById("robotSearch");
+  const builderSearch = document.getElementById("builderSearch");
+  const weaponSearch  = document.getElementById("weaponSearch");
+  const regIcon       = document.getElementById("registered-filter-icon");
 
-    const container = document.getElementById("robotContainer");
-    const robotSearch = document.getElementById("robotSearch");
-    const builderSearch = document.getElementById("builderSearch");
-    const weaponSearch = document.getElementById("weaponSearch");
-    const regIcon = document.getElementById("registered-filter-icon");
+  // build all cards & apply initial filters
+  function displayRobots() {
+    container.innerHTML = "";
 
-    // 2) Build all cards:
-    function displayRobots() {
-  const container = document.getElementById("robotContainer");
-  container.innerHTML = "";
+    // sort alphabetically
+    const sorted = robots.slice().sort((a, b) => a.name.localeCompare(b.name));
 
-  // 1) sort a copy of the array alphabetically by name
-  const sorted = robots
-    .slice()
-    .sort((a, b) => a.name.localeCompare(b.name));
+    sorted.forEach(r => {
+      const idx = robots.indexOf(r);
+      const card = document.createElement("div");
+      card.className = "robot-card";
+      card.dataset.robotIndex = idx;
+      card.dataset.registered = r.registered;
 
-  // 2) build a card for each sorted robot
-  sorted.forEach(r => {
-    const origIndex = robots.indexOf(r);
+      // image container
+      const imageContainer = document.createElement("div");
+      imageContainer.style.position = "relative";
+      imageContainer.style.display  = "flex";
+      imageContainer.style.flexDirection = "column";
+      imageContainer.style.alignItems    = "center";
 
-    // --- card wrapper ---
-    const card = document.createElement("div");
-    card.className = "robot-card";
-    card.dataset.robotIndex = origIndex;
-    card.dataset.registered = r.registered;
+      const image = document.createElement("img");
+      image.src         = r.images[0];
+      image.alt         = r.name;
+      image.className   = "robot-image";
+      image.dataset.index = 0;
+      imageContainer.appendChild(image);
 
-    // --- image container ---
-    const imageContainer = document.createElement("div");
-    imageContainer.style.display = "flex";
-    imageContainer.style.flexDirection = "column";
-    imageContainer.style.alignItems = "center";
-    imageContainer.style.position = "relative";
+      // controls if more than one image
+      if (r.images.length > 1) {
+        const controls = document.createElement("div");
+        controls.className = "image-controls";
+        controls.style.position = "absolute";
+        controls.style.bottom   = "-40px";
+        controls.style.left     = "50%";
+        controls.style.transform= "translateX(-50%)";
+        controls.style.display  = "flex";
+        controls.style.gap      = "10px";
+        controls.style.alignItems = "center";
 
-    const image = document.createElement("img");
-    image.src = r.images[0];
-    image.alt = r.name;
-    image.classList.add("robot-image");
-    image.dataset.index = 0;
-    imageContainer.appendChild(image);
+        // prev button
+        const prev = document.createElement("img");
+        prev.src = "Scroll_Button_Prev.png";
+        prev.className = "control-btn";
+        prev.onclick   = () => changeImage(idx, -1);
+        controls.appendChild(prev);
 
-    // Image Controls (Only if multiple images exist)
-    if (r.images.length > 1) {
-      const imageControls = document.createElement("div");
-      imageControls.className = "image-controls";
-      imageControls.style.position = "absolute";
-      imageControls.style.bottom = "-40px";
-      imageControls.style.left = "50%";
-      imageControls.style.transform = "translateX(-50%)";
-      imageControls.style.display = "flex";
-      imageControls.style.alignItems = "center";
-      imageControls.style.gap = "10px";
+        // dots
+        const dotsWrap = document.createElement("div");
+        dotsWrap.className = "dots-container";
+        r.images.forEach((_, i) => {
+          const dot = document.createElement("img");
+          dot.src       = "Dot.png";
+          dot.className = "dot";
+          dot.style.transform = i === 0 ? "scale(1.5)" : "scale(1)";
+          dotsWrap.appendChild(dot);
+        });
+        controls.appendChild(dotsWrap);
 
-      // Prev
-      const prev = document.createElement("img");
-      prev.src = "Scroll_Button_Prev.png";
-      prev.className = "control-btn";
-      prev.onclick = () => changeImage(origIndex, -1);
+        // next button
+        const next = document.createElement("img");
+        next.src = "Scroll_Button.png";
+        next.className = "control-btn";
+        next.onclick   = () => changeImage(idx, 1);
+        controls.appendChild(next);
 
-      // Dots
-      const dots = document.createElement("div");
-      dots.className = "dots-container";
-      r.images.forEach((_, i) => {
-        const dot = document.createElement("img");
-        dot.src = "Dot.png";
-        dot.className = "dot";
-        if (i === 0) dot.style.transform = "scale(1.5)";
-        dots.appendChild(dot);
-      });
-
-      // Next
-      const next = document.createElement("img");
-      next.src = "Scroll_Button.png";
-      next.className = "control-btn";
-      next.onclick = () => changeImage(origIndex, 1);
-
-      [prev, dots, next].forEach(el => imageControls.appendChild(el));
-      imageContainer.appendChild(imageControls);
-    }
-
-function changeImage(origIndex, direction) {
-  // find the card whose data-robot-index matches
-  const card = document.querySelector(`.robot-card[data-robot-index="${origIndex}"]`);
-  if (!card) return;
-
-  const image = card.querySelector(".robot-image");
-  const dots   = card.querySelectorAll(".dot");
-  const imgs   = robots[origIndex].images;
-
-  // read & bump the current frame index
-  let current = parseInt(image.dataset.index, 10) || 0;
-  let next    = (current + direction + imgs.length) % imgs.length;
-
-  // swap the picture
-  image.src         = imgs[next];
-  image.dataset.index = next;
-
-  // restyle the little dots
-  dots.forEach((dot, i) => {
-    dot.style.transform = i === next ? "scale(1.5)" : "scale(1)";
-  });
-}
-
-
-    // --- info container ---
-    const info = document.createElement("div");
-    info.className = "robot-info";
-
-    // Title + awards
-    const title = document.createElement("h2");
-    title.innerText = r.name;
-    const awardWrap = document.createElement("span");
-    awardWrap.className = "award-icons";
-    r.awards.forEach(a => {
-      const ai = document.createElement("img");
-      ai.src = a.toLowerCase().replace(" ", "") + ".png";
-      ai.alt = a;
-      awardWrap.appendChild(ai);
-    });
-    title.appendChild(awardWrap);
-    info.appendChild(title);
-
-    // The rest
-    info.innerHTML += `
-      <div class="info-line"><strong>Builder:</strong> ${r.builder}</div>
-      <div class="info-line"><strong>Weapon:</strong> ${r.weapon}</div>
-      <div class="info-line"><strong>Fought at CRBL?</strong> ${r.competed}</div>
-      <div class="info-line"><strong>Electronics:</strong> ${r.electronics}</div>
-      <div class="info-line"><strong>Description:</strong> ${r.description}</div>
-      <div class="info-line"><strong>Select Fight:</strong>
-        <a href="${r.fightLink}" target="_blank">${r.fightText}</a>
-      </div>
-    `;
-
-    // assemble
-    card.appendChild(imageContainer);
-    card.appendChild(info);
-    container.appendChild(card);
-  });
-
-  // 3) re-apply filters so searches/checkbox state stick
-  applyFilters();
-}
-
-    // 3) Show/hide cards based on filters
-      function currentIconName() {
-      return regIcon.src.split("/").pop();
-    }
-
-    function applyFilters() {
-  const nameF    = robotSearch.value.toLowerCase();
-  const builderF = builderSearch.value.toLowerCase();
-  const weaponF  = weaponSearch.value.toLowerCase();
-  const showOnly = currentIconName() === "check_box_checked.png";
-
-  document.querySelectorAll(".robot-card").forEach(card => {
-    const r = robots[+card.dataset.robotIndex];
-    const matches =
-      r.name.toLowerCase().includes(nameF) &&
-      r.builder.toLowerCase().includes(builderF) &&
-      r.weapon.toLowerCase().includes(weaponF);
-
-    card.style.display = (matches && (!showOnly || r.registered))
-      ? "flex"
-      : "none";
-  });
-}
-
-    regIcon.addEventListener("click", () => {
-	const robotSearch   = document.getElementById("robotSearch");
-	const builderSearch = document.getElementById("builderSearch");
-	const weaponSearch  = document.getElementById("weaponSearch");
-	const regIcon       = document.getElementById("registered-filter-icon");
-
-	[robotSearch, builderSearch, weaponSearch]
- 	.forEach(inp => inp.addEventListener("input", applyFilters));
-
-      if (currentIconName() === "check_box_checked.png") {
-        regIcon.src = "check_box_unchecked.png";
-      } else {
-        regIcon.src = "check_box_checked.png";
+        imageContainer.appendChild(controls);
       }
-      applyFilters();
+
+      // info panel
+      const info = document.createElement("div");
+      info.className = "robot-info";
+
+      // title + awards
+      const title = document.createElement("h2");
+      title.innerText = r.name;
+      const awardWrap = document.createElement("span");
+      awardWrap.className = "award-icons";
+      r.awards.forEach(a => {
+        const ai = document.createElement("img");
+        ai.src = a.toLowerCase().replace(" ", "") + ".png";
+        ai.alt = a;
+        awardWrap.appendChild(ai);
+      });
+      title.appendChild(awardWrap);
+      info.appendChild(title);
+
+      // the rest of the info
+      info.innerHTML += `
+        <div class="info-line"><strong>Builder:</strong> ${r.builder}</div>
+        <div class="info-line"><strong>Weapon:</strong> ${r.weapon}</div>
+        <div class="info-line"><strong>Fought at CRBL?</strong> ${r.competed}</div>
+        <div class="info-line"><strong>Electronics:</strong> ${r.electronics}</div>
+        <div class="info-line"><strong>Description:</strong> ${r.description}</div>
+        <div class="info-line"><strong>Select Fight:</strong>
+          <a href="${r.fightLink}" target="_blank">${r.fightText}</a>
+        </div>
+      `;
+
+      card.appendChild(imageContainer);
+      card.appendChild(info);
+      container.appendChild(card);
     });
 
-    displayRobots();  // builds cards and calls applyFilters()
+    applyFilters();
+  }
+
+  function changeImage(origIndex, direction) {
+    const card  = document.querySelector(`.robot-card[data-robot-index="${origIndex}"]`);
+    if (!card) return;
+    const img   = card.querySelector(".robot-image");
+    const dots  = card.querySelectorAll(".dot");
+    const imgs  = robots[origIndex].images;
+    let current = parseInt(img.dataset.index, 10) || 0;
+    let next    = (current + direction + imgs.length) % imgs.length;
+    img.src         = imgs[next];
+    img.dataset.index = next;
+    dots.forEach((d, i) => {
+      d.style.transform = i === next ? "scale(1.5)" : "scale(1)";
+    });
+  }
+
+  function currentIconName() {
+    return regIcon.src.split("/").pop();
+  }
+
+  function applyFilters() {
+    const nameF    = robotSearch.value.toLowerCase();
+    const builderF = builderSearch.value.toLowerCase();
+    const weaponF  = weaponSearch.value.toLowerCase();
+    const showOnly = currentIconName() === "check_box_checked.png";
+
+    document.querySelectorAll(".robot-card").forEach(card => {
+      const r       = robots[+card.dataset.robotIndex];
+      const matches = r.name.toLowerCase().includes(nameF)
+                   && r.builder.toLowerCase().includes(builderF)
+                   && r.weapon.toLowerCase().includes(weaponF);
+
+      card.style.display = (matches && (!showOnly || r.registered)) ? "flex" : "none";
+    });
+  }
+
+  // 1) Wire up searches immediately
+  [robotSearch, builderSearch, weaponSearch]
+    .forEach(inp => inp.addEventListener("input", applyFilters));
+
+  // 2) Filter‑icon toggle
+  regIcon.addEventListener("click", () => {
+    regIcon.src = currentIconName() === "check_box_checked.png"
+      ? "check_box_unchecked.png"
+      : "check_box_checked.png";
+    applyFilters();
   });
+
+  // 3) Kick off the initial render
+  displayRobots();
+});
 </script>
-</body>
-</html>
