@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CRBL Robot Database</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #B3E5FC; // #add8e6 (Previous background color)
-            text-align: center;
-        }
-        .header {
+  <title>CRBL Robot Database</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #B3E5FC; /* previous: #add8e6 */
+      text-align: center;
+    }
+    .header {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -37,18 +37,18 @@
             top: 15px;
         }
 
-.rankings-button {
-    transition: transform 0.2s ease-in-out;
-}
+	.rankings-button {
+	    transition: transform 0.2s ease-in-out;
+	}
 
-.rankings-button:hover {
-    transform: scale(1.1);
-}
+	.rankings-button:hover {
+	    transform: scale(1.1);
+	}
 
-.rankings-button:active {
-    transform: scale(1);
-}
- .rules-button {
+	.rankings-button:active {
+	    transform: scale(1);
+	}
+	 .rules-button {
             background-color: rgb(255, 140, 0);
             color: white;
             font-size: 18px;
@@ -63,25 +63,32 @@
             top: 15px;
         }
 
-.rules-button {
-    transition: transform 0.2s ease-in-out;
-}
+	.rules-button {
+	    transition: transform 0.2s ease-in-out;
+	}
 
-.rules-button:hover {
-    transform: scale(1.1);
-}
+	.rules-button:hover {
+	    transform: scale(1.1);
+	}
 
-.rules-button:active {
-    transform: scale(1);
-}
-
+	.rules-button:active {
+	    transform: scale(1);
+	}
 
         .search-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+ 	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  margin-bottom: 15px;
+	}
+
+	.filter-container {
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;   /* ← center it */
+	  margin: 10px 0;
+	}
+
         .search-bar {
             margin-bottom: 10px;
             padding: 7px;
@@ -92,6 +99,45 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+
+	.filter-container {
+	  display: flex;
+	  align-items: center;
+ 	  gap: 8px;
+	  margin-top: 10px;
+	  margin-bottom: 10px;
+	}
+	/* 1) the Registered-to-Compete checkbox */
+	.filter-icon {
+	  width: 24px;
+	  height: 24px;
+	}
+	.filter-label {
+	  font-weight: bold;  /* ← makes the text bold */
+	}
+
+	.control-btn {
+	  width: 30px;
+	  cursor: pointer;     /* keeps your pointer-hand on hover */
+	  transition: transform 0.2s ease;  /* re-enable that hover scale */
+	}
+
+	.control-btn:hover {
+	  transform: scale(1.3);
+	}
+
+	.dot {
+	  width: 10px;
+	  height: 8px;
+	  pointer-events: none;
+	  transition: transform 0.2s ease;
+	}
+	.dots-container {
+	  display: flex;
+	  gap: 5px;            
+	  justify-content: center;
+	}
+
         .robot-card {
             background-color: white;
             padding: 5px 15px;
@@ -119,11 +165,11 @@
 	}
 
 	.image-controls img:hover {
-	    transform: scale(1.3) scaleX(-1); /* Ensure it stays flipped */
+	    transform: scale(1.3); /* Ensure it stays flipped */
 	}
 
 	.image-controls img:active {
-	    transform: scale(1) scaleX(-1); /* Ensure it stays flipped */
+	    transform: scale(1); /* Ensure it stays flipped */
 	}
         .image-controls button {
             margin: 0 5px;
@@ -161,30 +207,48 @@
             text-decoration: underline;
             flex-shrink: 0;
         }
-    </style>
+	#registered-filter-icon {
+	  width: 24px !important;
+	  height: 24px !important;
+	}
+
+  </style>
 </head>
 <body>
-
-<div class="header">
-    <img src="CRBL Logo Transparent.png" alt="CRBL Logo" class="logo">
+  <div class="header">
+    <img src="CRBL Logo Transparent.png" class="logo" alt="CRBL Logo">
     <h1>CRBL Robot Database</h1>
-    <button class="rankings-button" onclick="window.location.href='https://owbots.github.io/CRBL-Official-Rankings/'">CRBL Rankings</button>
-    <a href="CRBL_Ruleset_2025.pdf" target="_blank" class="rules-button">CRBL Ruleset 2025</a>
+    <button class="rankings-button"
+            onclick="window.location.href='https://owbots.github.io/CRBL-Official-Rankings/'">
+      CRBL Rankings
+    </button>
+    <a href="CRBL_Ruleset_2025.pdf" target="_blank"
+       class="rules-button">CRBL Ruleset 2025</a>
+  </div>
 
-</div>
+  <div class="search-container">
+    <input id="robotSearch" class="search-bar"
+           placeholder="Search by robot…">
+    <input id="builderSearch" class="search-bar"
+           placeholder="Search by builder…">
+    <input id="weaponSearch" class="search-bar"
+           placeholder="Search by weapon type…">
+	<div class="filter-container">
+    <img id="registered-filter-icon"
+         src="Check Box Unchecked.png" 
+         class="filter-icon"
+         alt="Filter Icon">
+    <span class="filter-label">Registered to Compete</span>
+  </div>
+  </div>
 
+  <div id="robotContainer" class="container"></div>
 
-    <div class="search-container">
-        <input type="text" id="robotSearch" class="search-bar" placeholder="Search by robot..." onkeyup="filterRobots()">
-        <input type="text" id="builderSearch" class="search-bar" placeholder="Search by builder..." onkeyup="filterRobots()">
-        <input type="text" id="weaponSearch" class="search-bar" placeholder="Search by weapon type..." onkeyup="filterRobots()">
-    </div>
-    
-    <div class="container" id="robotContainer"></div>
-
-    <script>
-        const robots = [
-            {
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1) Your data with a boolean 'registered'
+    const robots = [
+      {
                 name: "Biscuit Head",
                 builder: "Nick Cowen",
                 weapon: "Flywheel Flipper",
@@ -194,7 +258,8 @@
                 images: ["Biscuit Head.jpg", "Biscuit Head3.png", "Biscuit Head2.png","Biscuit Head4.png"],  
                 awards: ["2nd", "3rd", "Greatest Design"],
                 fightLink: "https://www.youtube.com/watch?v=jt19ofN34A4&t=2519s",
-                fightText: "Biscuit Head vs. Phobos CRBL S3"
+                fightText: "Biscuit Head vs. Phobos CRBL S3",
+		registered: false
             },
             {
                 name: "Pain",
@@ -206,7 +271,8 @@
                 images: ["Pain.jpg", "Pain2.png"],  
                 awards: ["3rd"],
                 fightLink: "https://www.youtube.com/watch?v=wgt_IvYyFeA&t=1010s",
-                fightText: "Pain vs. Bruin CRBL S2"
+                fightText: "Pain vs. Bruin CRBL S2",
+		registered: false
             },
 		{
                 name: "Papi V2",
@@ -218,7 +284,8 @@
                 images: ["Papi V2.jpg"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=jt19ofN34A4&t=4007s",
-                fightText: "Papi V2 vs. Bruin CRBL S3"
+                fightText: "Papi V2 vs. Bruin CRBL S3",
+		registered: false
 		},
 
 		{
@@ -231,7 +298,8 @@
                 images: ["Papi V3_6.png", "Papi V3_2.png", "Papi V3.png", "Papi V3_3.png", "Papi V3_5.gif"], 
                 awards: ["GoldNut", "GoldNut", "Greatest Design"],
                 fightLink: "https://www.youtube.com/watch?v=MwSBJGnAeYs&t=1366s",
-                fightText: "Papi V3 vs. Kite CRBL S4 Final"
+                fightText: "Papi V3 vs. Kite CRBL S4 Final",
+		registered: true
 		},
 	{
                 name: "Tugboat",
@@ -243,7 +311,8 @@
                 images: ["Tugboat.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=wgt_IvYyFeA&t=2s",
-                fightText: "Tugboat vs. Pain CRBL S2"
+                fightText: "Tugboat vs. Pain CRBL S2",
+		registered: false
             },
 	{
                 name: "Bruin",
@@ -255,7 +324,8 @@
                 images: ["Bruin2.png", "Bruin1.png", "Bruin3.png"],   
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=eWVEzPU9a6g&t=643s",
-                fightText: "Bruin vs. Friendzone"
+                fightText: "Bruin vs. Friendzone",
+		registered: false
             },
 {
                 name: "Kite",
@@ -267,7 +337,8 @@
                 images: ["Kite.png"],  
                 awards: ["2nd"],
                 fightLink: "https://www.youtube.com/watch?v=MwSBJGnAeYs&t=972s",
-                fightText: "Kite vs. Bad Luck CRBL S4"
+                fightText: "Kite vs. Bad Luck CRBL S4",
+		registered: false
             },
 		{
                 name: "Goaltender",
@@ -279,7 +350,8 @@
                 images: ["Goaltender.png", "Goaltender3.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=eWVEzPU9a6g&t=2244s",
-                fightText: "Goaltender vs. Terabyte"
+                fightText: "Goaltender vs. Terabyte",
+		registered: false
 		},
 	{
                 name: "Flakes",
@@ -291,7 +363,8 @@
                 images: ["Flakes.jpg"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=wgt_IvYyFeA&t=861s",
-                fightText: "Flakes vs. Tugboat CRBL S2"
+                fightText: "Flakes vs. Tugboat CRBL S2",
+		registered: false
 		},
 	{
                 name: "Striker",
@@ -303,7 +376,8 @@
                 images: ["Striker.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=wgt_IvYyFeA&t=327s",
-                fightText: "Striker vs. Bruin CRBL S2"
+                fightText: "Striker vs. Bruin CRBL S2",
+		registered: false
 		},
 	{
                 name: "Cold Front",
@@ -315,7 +389,8 @@
                 images: ["Cold Front.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=jt19ofN34A4&t=1425s",
-                fightText: "Cold Front vs. Bad Luck CRBL S3"
+                fightText: "Cold Front vs. Bad Luck CRBL S3",
+		registered: false
 		},
 {
                 name: "Bad Luck",
@@ -327,7 +402,8 @@
                 images: ["Bad Luck.png","Bad Luck2.png"],  
                 awards: ["MostDestructive", "OrganizersChoice"],
                 fightLink: "https://youtu.be/MwSBJGnAeYs?si=TWYPniswuL_EgfF5&t=823",
-                fightText: "Bad Luck vs. Wheeled Scorpion CRBL S4"
+                fightText: "Bad Luck vs. Wheeled Scorpion CRBL S4",
+		registered: true
 		},
 		{
                 name: "Brute",
@@ -339,7 +415,8 @@
                 images: ["Brute.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=jVCrk61Knas",
-                fightText: "Brute vs. Titan"
+                fightText: "Brute vs. Titan",
+		registered: false
 		},
 {
                 name: "Cataclysm",
@@ -351,7 +428,8 @@
                 images: ["Cataclysm.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=ZAnaeMv5TQI&t=3906s",
-                fightText: "Cataclysm vs. G-Force CRBL S5"
+                fightText: "Cataclysm vs. G-Force CRBL S5",
+		registered: false
 		},
 {
                 name: "Catastrophe",
@@ -363,7 +441,8 @@
                 images: ["Catastrophe.png","Catastrophe2.png"],  
                 awards: ["2nd", "2nd"],
                 fightLink: "https://www.youtube.com/watch?v=ZKCOt0NtKUI",
-                fightText: "Catastrophe vs. Deception CRBL S5"
+                fightText: "Catastrophe vs. Deception CRBL S5",
+		registered: false
 		},
 {
 		name: "Black Ops",
@@ -375,7 +454,8 @@
                 images: ["No Picture.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Controlled Movement",
@@ -387,7 +467,8 @@
                 images: ["No Picture.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Crabvergent",
@@ -399,7 +480,8 @@
                 images: ["Crabvergent.png"],  
                 awards: ["Greatest Design"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Deception",
@@ -411,7 +493,8 @@
                 images: ["Deception.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Deimos",
@@ -423,7 +506,8 @@
                 images: ["Deimos.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Drumroll",
@@ -435,7 +519,8 @@
                 images: ["Drumroll.png"],  
                 awards: ["3rd", "MostDestructive"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "G-Force",
@@ -447,7 +532,8 @@
                 images: ["G-Force1.png"],  
                 awards: ["Most Destroyed"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Greeble",
@@ -459,7 +545,8 @@
                 images: ["Greeble.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=gDifkA90NDI",
-                fightText: "Greeble vs. The Three Amigos CRBL S5"
+                fightText: "Greeble vs. The Three Amigos CRBL S5",
+		registered: false
 		},
 {
 		name: "Helios",
@@ -471,7 +558,8 @@
                 images: ["Helios.png", "Helios2.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "IDC",
@@ -483,7 +571,8 @@
                 images: ["IDC.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "IDK",
@@ -495,7 +584,8 @@
                 images: ["IDK2.png", "IDK3.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Impact",
@@ -507,7 +597,8 @@
                 images: ["Impact.png"],  
                 awards: ["GoldNut", "MostDestructive"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Meteor",
@@ -519,7 +610,8 @@
                 images: ["Meteor.png", "Meteor2.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "MinoTire",
@@ -531,19 +623,21 @@
                 images: ["MinoTire.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Supernova",
-                builder: "---",
+                builder: "Caden",
                 weapon: "Vertical Egg Beater Spinner",
                 competed: "Yes",
-                electronics: "(No description)",
-                description: "(No description)",
+                electronics: "2 BuWizz and 2 Powered up",
+                description: "Four wheel drive lynx style egg beater",
                 images: ["Nova.png"],  
                 awards: ["OrganizersChoice"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Onslaught",
@@ -555,7 +649,8 @@
                 images: ["Onslaught.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Ouch",
@@ -567,7 +662,8 @@
                 images: ["Ouch.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Outrage",
@@ -579,7 +675,8 @@
                 images: ["Outrage.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Phobos V2",
@@ -591,7 +688,8 @@
                 images: ["Phobos V2.png","Phobos2.png"],  
                 awards: ["GoldNut"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Phobos V3",
@@ -603,7 +701,8 @@
                 images: ["Phobos V3.png"],  
                 awards: ["3rd"],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Pikmin",
@@ -615,7 +714,8 @@
                 images: ["Pikmin2.png", "Pikmin.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Rupture",
@@ -627,7 +727,8 @@
                 images: ["Rupture.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "The Three Amigos",
@@ -639,7 +740,8 @@
                 images: ["The Three Amigos.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Titan",
@@ -651,19 +753,21 @@
                 images: ["Titan.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Total Disposal",
-                builder: "---",
+                builder: "Jacob Balaban",
                 weapon: "Vertical Bar Spinner",
                 competed: "Yes",
-                electronics: "(No description)",
-                description: "(No description)",
+                electronics: "1 Buwizz battery 2 Powered up large motors 1 Powered up medium motor 1 Buwizz motor",
+                description: "Low profile with vertical spinner and a self righter.",
                 images: ["Total Disposal.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Uppercut",
@@ -675,7 +779,8 @@
                 images: ["No Picture.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Walking Las Vegas",
@@ -687,7 +792,8 @@
                 images: ["Walking Las Vegas.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Wheeled Scorpion",
@@ -699,7 +805,8 @@
                 images: ["Wheeled Scorpion.png", "Wheeled Scorpion2.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Wyvern",
@@ -711,7 +818,8 @@
                 images: ["No Picture.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: false
 		},
 {
 		name: "Tempest",
@@ -723,11 +831,12 @@
                 images: ["Tempest.png"],  
                 awards: [],
                 fightLink: "https://www.youtube.com/watch?v=D-KYs-nzVhg",
-                fightText: "Tempest vs. Phobos V2"
+                fightText: "Tempest vs. Phobos V2",
+		registered: false
 		},
 {
 		name: "Pyronite",
-                builder: "Advent",
+                builder: "AdventCD",
                 weapon: "Vertical Drum Spinner",
                 competed: "No",
                 electronics: "Two powered up motors for the drive, a buwizz motor for the weapon, and a buwizz 3.0 for the battery",
@@ -735,7 +844,8 @@
                 images: ["Pyronite.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Bergentrückung",
@@ -747,7 +857,8 @@
                 images: ["Bergentrückung.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Dumpster Fire",
@@ -759,7 +870,8 @@
                 images: ["Dumpster Fire.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
 		},
 {
 		name: "Warhard",
@@ -771,188 +883,202 @@
                 images: ["Warhard.png"],  
                 awards: [],
                 fightLink: "",
-                fightText: "No Link Available"
+                fightText: "No Link Available",
+		registered: true
+		},
+{
+		name: "Dissipate",
+                builder: "AdventCD",
+                weapon: "Lifter",
+                competed: "No",
+                electronics: "An old buwizz 2.0 and mould king 4.0 with some old powerfunctions large motors for the drive and an old XL motor for the lifter.",
+                description: "Dissipate wasn't even supposed to be a real robot. Before this version the robot, it was entirely brick built, with no technic pieces on the entire robot. The entire idea was that it was supposed to be a sparing partner for Pyronite and to test my driving ability without a spinning weapon. Once CRBL S6 was announced, my dad needed a robot to compete with. I looked through all of my older robots that I'd built that wasn't similar to Pyronite, and the only one that stood out to me was Dissipate. After a lot of failed designs, Dissipate went from being the biggest joke bot ever built to actually looking and performing like a real robot. Dissipate is still made of almost all spare parts, and is supposed to be beginner friendly. The only difference is that two people are needed to operate the robot. One for the lifter and the other for the drive. I'm hoping that Dissipate can compete with some of the robots as CRBL S6, and show people that it's not a joke robot anymore.",
+                images: ["Dissipate.png"],  
+                awards: [],
+                fightLink: "",
+                fightText: "No Link Available",
+		registered: true
 		},
 
-        ];
+    ];
 
-function displayRobots() {
     const container = document.getElementById("robotContainer");
-    container.innerHTML = "";
+    const robotSearch = document.getElementById("robotSearch");
+    const builderSearch = document.getElementById("builderSearch");
+    const weaponSearch = document.getElementById("weaponSearch");
+    const regIcon = document.getElementById("registered-filter-icon");
 
-    // Sort robots alphabetically by name
-    const sortedRobots = robots.slice().sort((a, b) => a.name.localeCompare(b.name));
+    // 2) Build all cards:
+    function displayRobots() {
+  const container = document.getElementById("robotContainer");
+  container.innerHTML = "";
 
-    sortedRobots.forEach((robot, index) => {
-        const robotCard = document.createElement("div");
-        robotCard.classList.add("robot-card");
-        robotCard.setAttribute("data-robot-index", index); // Store sorted index
+  // 1) sort a copy of the array alphabetically by name
+  const sorted = robots
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
 
-        // Image Container
-        const imageContainer = document.createElement("div");
-        imageContainer.style.display = "flex";
-        imageContainer.style.flexDirection = "column";
-        imageContainer.style.alignItems = "center";
-        imageContainer.style.position = "relative";
+  // 2) build a card for each sorted robot
+  sorted.forEach(r => {
+    const origIndex = robots.indexOf(r);
 
-        const image = document.createElement("img");
-        image.src = robot.images[0];
-        image.alt = robot.name;
-        image.classList.add("robot-image");
-        image.dataset.index = 0;
+    // --- card wrapper ---
+    const card = document.createElement("div");
+    card.className = "robot-card";
+    card.dataset.robotIndex = origIndex;
+    card.dataset.registered = r.registered;
 
-        imageContainer.appendChild(image);
+    // --- image container ---
+    const imageContainer = document.createElement("div");
+    imageContainer.style.display = "flex";
+    imageContainer.style.flexDirection = "column";
+    imageContainer.style.alignItems = "center";
+    imageContainer.style.position = "relative";
 
-        // Image Controls (Only if multiple images exist)
-        if (robot.images.length > 1) {
-            const imageControls = document.createElement("div");
-            imageControls.classList.add("image-controls");
-            imageControls.style.display = "flex";
-            imageControls.style.alignItems = "center";
-            imageControls.style.position = "absolute";
-            imageControls.style.bottom = "-40px";
-            imageControls.style.left = "50%";
-            imageControls.style.transform = "translateX(-55%)";
-            imageControls.style.gap = "10px";
+    const image = document.createElement("img");
+    image.src = r.images[0];
+    image.alt = r.name;
+    image.classList.add("robot-image");
+    image.dataset.index = 0;
+    imageContainer.appendChild(image);
 
-            // Previous Button (Back Arrow)
-            const prevButton = document.createElement("img");
-            prevButton.src = "Scroll_Button_Prev.png";
-            prevButton.style.cursor = "pointer";
-            prevButton.style.width = "30px";
-            prevButton.onmouseover = () => prevButton.style.transform = "scale(1.3)";
-            prevButton.onmouseout = () => prevButton.style.transform = "scale(1)";
-            prevButton.onmousedown = () => prevButton.style.transform = "scale(1)";
-            prevButton.onclick = () => changeImage(index, -1); // Use sorted index
+    // Image Controls (Only if multiple images exist)
+    if (r.images.length > 1) {
+      const imageControls = document.createElement("div");
+      imageControls.className = "image-controls";
+      imageControls.style.position = "absolute";
+      imageControls.style.bottom = "-40px";
+      imageControls.style.left = "50%";
+      imageControls.style.transform = "translateX(-50%)";
+      imageControls.style.display = "flex";
+      imageControls.style.alignItems = "center";
+      imageControls.style.gap = "10px";
 
-            // Next Button (Forward Arrow)
-            const nextButton = document.createElement("img");
-            nextButton.src = "Scroll_Button.png";
-            nextButton.style.cursor = "pointer";
-            nextButton.style.width = "30px";
-            nextButton.onmouseover = () => nextButton.style.transform = "scale(1.3)";
-            nextButton.onmouseout = () => nextButton.style.transform = "scale(1)";
-            nextButton.onmousedown = () => nextButton.style.transform = "scale(1)";
-            nextButton.onclick = () => changeImage(index, 1); // Use sorted index
+      // Prev
+      const prev = document.createElement("img");
+      prev.src = "Scroll_Button_Prev.png";
+      prev.className = "control-btn";
+      prev.onclick = () => changeImage(origIndex, -1);
 
-            // Dots Indicator
-            const dotsContainer = document.createElement("div");
-            dotsContainer.classList.add("dots-container");
-            dotsContainer.style.display = "flex";
-            dotsContainer.style.justifyContent = "center";
-            dotsContainer.style.gap = "5px";
-            dotsContainer.style.whiteSpace = "nowrap";
+      // Dots
+      const dots = document.createElement("div");
+      dots.className = "dots-container";
+      r.images.forEach((_, i) => {
+        const dot = document.createElement("img");
+        dot.src = "Dot.png";
+        dot.className = "dot";
+        if (i === 0) dot.style.transform = "scale(1.5)";
+        dots.appendChild(dot);
+      });
 
-            for (let i = 0; i < robot.images.length; i++) {
-                const dot = document.createElement("img");
-                dot.src = "Dot.png";
-                dot.classList.add("dot");
-                dot.style.width = "10px";
-                dot.style.height = "8px";
-                dot.style.transition = "transform 0.2s ease";
-                dot.style.pointerEvents = "none";
+      // Next
+      const next = document.createElement("img");
+      next.src = "Scroll_Button.png";
+      next.className = "control-btn";
+      next.onclick = () => changeImage(origIndex, 1);
 
-                dotsContainer.appendChild(dot);
-            }
+      [prev, dots, next].forEach(el => imageControls.appendChild(el));
+      imageContainer.appendChild(imageControls);
+    }
 
-            dotsContainer.children[0].style.transform = "scale(1.5)"; // Highlight first dot
+function changeImage(origIndex, direction) {
+  // find the card whose data-robot-index matches
+  const card = document.querySelector(`.robot-card[data-robot-index="${origIndex}"]`);
+  if (!card) return;
 
-            // Append elements
-            imageControls.appendChild(prevButton);
-            imageControls.appendChild(dotsContainer);
-            imageControls.appendChild(nextButton);
-            imageContainer.appendChild(imageControls);
-        }
+  const image = card.querySelector(".robot-image");
+  const dots   = card.querySelectorAll(".dot");
+  const imgs   = robots[origIndex].images;
 
-        // Robot Info
-        const info = document.createElement("div");
-        info.classList.add("robot-info");
+  // read & bump the current frame index
+  let current = parseInt(image.dataset.index, 10) || 0;
+  let next    = (current + direction + imgs.length) % imgs.length;
 
-        const title = document.createElement("h2");
-        title.innerText = robot.name;
+  // swap the picture
+  image.src         = imgs[next];
+  image.dataset.index = next;
 
-        const awardContainer = document.createElement("span");
-        awardContainer.classList.add("award-icons");
-        robot.awards.forEach(award => {
-            const awardImg = document.createElement("img");
-            awardImg.src = award.toLowerCase().replace(" ", "") + ".png";
-            awardImg.alt = award;
-            awardContainer.appendChild(awardImg);
-        });
-
-        title.appendChild(awardContainer);
-        info.appendChild(title);
-
-        info.innerHTML += `
-            <div class="info-line"><strong>Builder:</strong> ${robot.builder}</div>
-            <div class="info-line"><strong>Weapon:</strong> ${robot.weapon}</div>
-	    <div class="info-line"><span style="font-size: 0.85em;"><strong>Fought at CRBL?</strong></span>&nbsp;&nbsp;${robot.competed}</div>
-            <div class="info-line"><strong>Electronics:</strong> ${robot.electronics}</div>
-            <div class="info-line"><strong>Description:</strong> ${robot.description}</div>
-            <div class="info-line"><strong>Select Fight:</strong> <a href="${robot.fightLink}" target="_blank">${robot.fightText}</a></div>
-        `;
-
-        robotCard.appendChild(imageContainer);
-        robotCard.appendChild(info);
-        container.appendChild(robotCard);
-    });
+  // restyle the little dots
+  dots.forEach((dot, i) => {
+    dot.style.transform = i === next ? "scale(1.5)" : "scale(1)";
+  });
 }
 
 
-function changeImage(displayIndex, direction) {
-    // Get the sorted robots list
-    const sortedRobots = robots.slice().sort((a, b) => a.name.localeCompare(b.name));
+    // --- info container ---
+    const info = document.createElement("div");
+    info.className = "robot-info";
 
-    // Find the correct robot based on display index
-    const robot = sortedRobots[displayIndex];
-
-    // Find the correct card from the display
-    const robotCards = document.querySelectorAll(".robot-card");
-    const robotCard = Array.from(robotCards).find(card => 
-        parseInt(card.getAttribute("data-robot-index")) === displayIndex
-    );
-
-    if (!robotCard) return; // Safety check
-
-    // Find the image element in this card
-    const image = robotCard.querySelector(".robot-image");
-    let currentIndex = parseInt(image.dataset.index);
-    let newIndex = (currentIndex + direction + robot.images.length) % robot.images.length;
-    
-    image.src = robot.images[newIndex];
-    image.dataset.index = newIndex;
-
-    // Update Dots
-    const dots = robotCard.querySelectorAll(".dot");
-    dots.forEach((dot, i) => {
-        dot.style.transform = i === newIndex ? "scale(1.5)" : "scale(1)";
+    // Title + awards
+    const title = document.createElement("h2");
+    title.innerText = r.name;
+    const awardWrap = document.createElement("span");
+    awardWrap.className = "award-icons";
+    r.awards.forEach(a => {
+      const ai = document.createElement("img");
+      ai.src = a.toLowerCase().replace(" ", "") + ".png";
+      ai.alt = a;
+      awardWrap.appendChild(ai);
     });
+    title.appendChild(awardWrap);
+    info.appendChild(title);
+
+    // The rest
+    info.innerHTML += `
+      <div class="info-line"><strong>Builder:</strong> ${r.builder}</div>
+      <div class="info-line"><strong>Weapon:</strong> ${r.weapon}</div>
+      <div class="info-line"><strong>Fought at CRBL?</strong> ${r.competed}</div>
+      <div class="info-line"><strong>Electronics:</strong> ${r.electronics}</div>
+      <div class="info-line"><strong>Description:</strong> ${r.description}</div>
+      <div class="info-line"><strong>Select Fight:</strong>
+        <a href="${r.fightLink}" target="_blank">${r.fightText}</a>
+      </div>
+    `;
+
+    // assemble
+    card.appendChild(imageContainer);
+    card.appendChild(info);
+    container.appendChild(card);
+  });
+
+  // 3) re-apply filters so searches/checkbox state stick
+  applyFilters();
 }
 
-displayRobots();
+    // 3) Show/hide cards based on filters
+    function applyFilters() {
+      const nameF = robotSearch.value.toLowerCase();
+      const builderF = builderSearch.value.toLowerCase();
+      const weaponF = weaponSearch.value.toLowerCase();
+      const showOnlyRegistered = regIcon.src.includes("Checked");
 
+      document.querySelectorAll(".robot-card").forEach(card => {
+        const r = robots[+card.dataset.robotIndex];
+        const matches =
+          r.name.toLowerCase().includes(nameF) &&
+          r.builder.toLowerCase().includes(builderF) &&
+          r.weapon.toLowerCase().includes(weaponF) &&
+          (!showOnlyRegistered || r.registered);
 
+        card.style.display = matches ? "flex" : "none";
+      });
+    }
 
+    // 4) Toggle registration filter
+    regIcon.addEventListener("click", () => {
+      regIcon.src = regIcon.src.includes("Checked")
+        ? "Check Box Unchecked.png"
+        : "Check Box Checked.png";
+      applyFilters();
+    });
 
+    // 5) Wire up searches
+    [robotSearch, builderSearch, weaponSearch]
+      .forEach(inp => inp.addEventListener("input", applyFilters));
 
-        function filterRobots() {
-            const nameFilter = document.getElementById("robotSearch").value.toLowerCase();
-            const builderFilter = document.getElementById("builderSearch").value.toLowerCase();
-            const weaponFilter = document.getElementById("weaponSearch").value.toLowerCase();
-
-            document.querySelectorAll(".robot-card").forEach(card => {
-                const name = card.querySelector("h2").textContent.toLowerCase();
-                const builder = card.querySelector(".info-line:nth-of-type(1)").textContent.split(": ")[1]?.toLowerCase() || "";
-                const weapon = card.querySelector(".info-line:nth-of-type(2)").textContent.split(": ")[1]?.toLowerCase() || "";
-
-                card.style.display = 
-                    (name.includes(nameFilter) && builder.includes(builderFilter) && weapon.includes(weaponFilter))
-                        ? "flex"
-                        : "none";
-            });
-        }
-
-        displayRobots();
-    </script>
+    // Final: render:
+    displayRobots();
+  });
+  </script>
 </body>
 </html>
