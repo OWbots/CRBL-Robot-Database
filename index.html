@@ -235,7 +235,7 @@
            placeholder="Search by weapon type…">
 	<div class="filter-container">
     <img id="registered-filter-icon"
-         src="Check Box UnChecked.png" 
+         src="check_box_checked.png" 
          class="filter-icon"
          alt="Filter Icon">
     <span class="filter-label">Registered to Compete</span>
@@ -1067,8 +1067,8 @@ function changeImage(origIndex, direction) {
     // 4) Toggle registration filter
     regIcon.addEventListener("click", () => {
       regIcon.src = regIcon.src.includes("Checked")
-        ? "Check Box UnChecked.png"
-        : "Check Box Checked.png";
+        ? "check_box_unchecked.png"
+        : "check_box_checked.png";
       applyFilters();
     });
 
