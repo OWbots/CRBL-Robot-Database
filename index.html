@@ -1046,38 +1046,30 @@ function changeImage(origIndex, direction) {
 }
 
     // 3) Show/hide cards based on filters
-    function applyFilters() {
-      const nameF = robotSearch.value.toLowerCase();
-      const builderF = builderSearch.value.toLowerCase();
-      const weaponF = weaponSearch.value.toLowerCase();
-      const showOnlyRegistered = regIcon.src.includes("Checked");
+      function currentIconName() {
+      return regIcon.src.split("/").pop();
+    }
 
+    function applyFilters() {
+      const showOnly = currentIconName() === "check_box_checked.png";
       document.querySelectorAll(".robot-card").forEach(card => {
         const r = robots[+card.dataset.robotIndex];
-        const matches =
-          r.name.toLowerCase().includes(nameF) &&
-          r.builder.toLowerCase().includes(builderF) &&
-          r.weapon.toLowerCase().includes(weaponF) &&
-          (!showOnlyRegistered || r.registered);
-
-        card.style.display = matches ? "flex" : "none";
+        card.style.display = (!showOnly || r.registered) ? "flex" : "none";
       });
     }
 
-    // 4) Toggle registration filter
     regIcon.addEventListener("click", () => {
-      regIcon.src = regIcon.src.includes("Checked")
-        ? "check_box_unchecked.png"
-        : "check_box_checked.png";
+      if (currentIconName() === "check_box_checked.png") {
+        regIcon.src = "check_box_unchecked.png";
+      } else {
+        regIcon.src = "check_box_checked.png";
+      }
       applyFilters();
     });
 
-    // 5) Wire up searches
-    [robotSearch, builderSearch, weaponSearch]
-      .forEach(inp => inp.addEventListener("input", applyFilters));
-
-    // Final: render:
-    displayRobots();
+    displayRobots();  // builds cards and calls applyFilters()
+  });
+</script>
   });
   </script>
 </body>
