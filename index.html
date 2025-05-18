@@ -1051,14 +1051,33 @@ function changeImage(origIndex, direction) {
     }
 
     function applyFilters() {
-      const showOnly = currentIconName() === "check_box_checked.png";
-      document.querySelectorAll(".robot-card").forEach(card => {
-        const r = robots[+card.dataset.robotIndex];
-        card.style.display = (!showOnly || r.registered) ? "flex" : "none";
-      });
-    }
+  const nameF    = robotSearch.value.toLowerCase();
+  const builderF = builderSearch.value.toLowerCase();
+  const weaponF  = weaponSearch.value.toLowerCase();
+  const showOnly = currentIconName() === "check_box_checked.png";
+
+  document.querySelectorAll(".robot-card").forEach(card => {
+    const r = robots[+card.dataset.robotIndex];
+    const matches =
+      r.name.toLowerCase().includes(nameF) &&
+      r.builder.toLowerCase().includes(builderF) &&
+      r.weapon.toLowerCase().includes(weaponF);
+
+    card.style.display = (matches && (!showOnly || r.registered))
+      ? "flex"
+      : "none";
+  });
+}
 
     regIcon.addEventListener("click", () => {
+	const robotSearch   = document.getElementById("robotSearch");
+	const builderSearch = document.getElementById("builderSearch");
+	const weaponSearch  = document.getElementById("weaponSearch");
+	const regIcon       = document.getElementById("registered-filter-icon");
+
+	[robotSearch, builderSearch, weaponSearch]
+ 	.forEach(inp => inp.addEventListener("input", applyFilters));
+
       if (currentIconName() === "check_box_checked.png") {
         regIcon.src = "check_box_unchecked.png";
       } else {
@@ -1070,7 +1089,5 @@ function changeImage(origIndex, direction) {
     displayRobots();  // builds cards and calls applyFilters()
   });
 </script>
-  });
-  </script>
 </body>
 </html>
